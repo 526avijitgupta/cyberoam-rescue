@@ -1,6 +1,6 @@
 cyberoam-rescue
 ===============
-Cyberoam rescue helps you to login directly into cyberoam hassle-free.
+Cyberoam rescue helps you to login directly into cyberoam hassle-free.  
 Thanks to [Yash Mehrotra](https://github.com/yashmehrotra) for his contribution      
 
 ### Requirements:  
@@ -18,7 +18,8 @@ Thanks to [Yash Mehrotra](https://github.com/yashmehrotra) for his contribution
 2. Keeps you logged in all the time by checking your login status periodically.  
 3. Alerts you in case of login/logout as a notification.  
 
-### Additional Functionalities:  
+#### Additional Functionalities:  
 * To open google chrome once after login, uncomment the corresponding line.  
+* For best usage, add custom keyboard shortcuts for the login/logout.  
 
 Feel free to fork and contribute
