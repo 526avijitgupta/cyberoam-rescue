@@ -5,3 +5,6 @@
 *.pyc
 *.py~
 *.py#
+
+# json
+*.json~

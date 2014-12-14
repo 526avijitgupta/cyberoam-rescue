@@ -6,17 +6,14 @@ import sys
 from time import sleep
 import httplib
 from check import *
+import json
 
 # For periodic checking of login status
 SLEEP_TIME = 200
 
 BASE_URL = "http://172.16.68.6:8090/login.xml"
 
-# Add your usernames and passwords here
-user_dict = {
-    'username':'pass',
-    'username2':'pass2',
-}
+user_dict = json.load(open('credentials.json'))
 
 # Function to send login or logout request
 def send_request(request_type, *arg):
@@ -71,10 +68,16 @@ if __name__ == "__main__":
                             launch_chrome = False
                     except subprocess.CalledProcessError:
                         pass
-                    if launch_chrome:
-                        print "Launching chrome.."
-                        with open(os.devnull, 'wb') as devnull:
-                            subprocess.Popen('google-chrome', stdout=devnull, stderr=subprocess.STDOUT)
+                    except Exception as e:
+                        print e
+
+                    # Uncomment the following piece of code for automatic launching of google chrome(if not already open) on login
+                        
+                    # if launch_chrome:
+                        # print "Launching chrome.."
+                        # with open(os.devnull, 'wb') as devnull:
+                        #    subprocess.Popen('google-chrome', stdout=devnull, stderr=subprocess.STDOUT)
+                        
                     print "Press Ctrl + C to logout"
                     break
                 else:
