@@ -1,5 +1,7 @@
-# Cause of emacs
-*.py~
+# Thanks to emacs
+.#*
 
 # python
 *.pyc
+*.py~
+*.py#
