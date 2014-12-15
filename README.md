@@ -9,7 +9,7 @@ Thanks to [Yash Mehrotra](https://github.com/yashmehrotra) for his contribution.
 
 ### Requirements:  
 1. Any linux distro (tested on Ubuntu).    
-2. Add the usernames, passwords to the `credentials.json` file.    
+2. Add the usernames, passwords to the `credentials.json` file. You can have as many usernames as you want, just make sure only correct combinations are there to prevent time wastage.      
 
 ### Usage:  
 1. For login: `python .post.py login`  
