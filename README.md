@@ -21,7 +21,7 @@ Thanks to [Yash Mehrotra](https://github.com/yashmehrotra) for his contribution.
 3. Alerts you in case of successful login/logout through notify-send.  
 
 #### Additional Functionalities:  
-* To open google chrome once after login, uncomment the corresponding piece of code.    
+* To open google chrome once after login, uncomment the corresponding piece of [code](https://github.com/526avijitgupta/cyberoam-rescue/blob/master/.post.py#L98-103)    
 * For best usage, add custom keyboard shortcuts for the login/logout.  
 
 Feel free to fork and contribute
