@@ -15,7 +15,8 @@ SLEEP_TIME = 200
 BASE_URL = "http://172.16.68.6:8090/login.xml"
 
 try:
-    user_dict = load(open('credentials.json'))
+    credentials = load(open('.credentials.json'))
+    user_dict = credentials[0]
 except ValueError:
     print """Error decoding the JSON file.
     [Note: Check that there is a trailing comma after every line in the
@@ -95,12 +96,12 @@ if __name__ == "__main__":
                     [Note: google-chrome will be launched only if
                     it is not already open, and not otherwise]"""
 
-                    """if launch_chrome:
+                    if credentials[1]['google-chrome'] == 'yes':
                        print "Launching chrome.."
                        with open(devnull, 'wb') as devnull:
                           subprocess.Popen(
                           'google-chrome', stdout=devnull,
-                          stderr=subprocess.STDOUT)"""
+                          stderr=subprocess.STDOUT)
 
                     print "Press Ctrl + C to logout"
                     break
