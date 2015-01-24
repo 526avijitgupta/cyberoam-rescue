@@ -84,7 +84,7 @@ if __name__ == "__main__":
                         output = subprocess.check_output(
                             ('pgrep', 'chrome'), stdin=ps.stdout)
                         output = output.split("\n")
-                        if (len(output) > 2):
+                        if (len(output) > 1):
                             launch_chrome = False
                     except subprocess.CalledProcessError:
                         pass
