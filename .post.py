@@ -97,11 +97,11 @@ if __name__ == "__main__":
                     it is not already open, and not otherwise]"""
 
                     if credentials[1]['google-chrome'] == 'yes':
-                       print "Launching chrome.."
-                       with open(devnull, 'wb') as devnull:
-                          subprocess.Popen(
-                          'google-chrome', stdout=devnull,
-                          stderr=subprocess.STDOUT)
+                        print "Launching chrome.."
+                        with open(devnull, 'wb') as devnull:
+                            subprocess.Popen(
+                                'google-chrome', stdout=devnull,
+                                stderr=subprocess.STDOUT)
 
                     print "Press Ctrl + C to logout"
                     break
