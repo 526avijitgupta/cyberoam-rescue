@@ -14,9 +14,13 @@ SLEEP_TIME = 200
 
 BASE_URL = "http://172.16.68.6:8090/login.xml"
 
+BROWSERS_DICT = {"0": "", "1": "firefox", "2": "google-chrome"}
+
 try:
     credentials = load(open('.credentials.json'))
     user_dict = credentials[0]
+    browser = BROWSERS_DICT[credentials[1]["web-browser"]]
+    print browser
 except ValueError:
     print """Error decoding the JSON file.
     [Note: Check that there is a trailing comma after every line in the
@@ -75,32 +79,32 @@ if __name__ == "__main__":
                     print "Incorrect username or password"
                 elif "into" in data:
                     notify_alert(
-                        "Successfully logged in with {0} ".format(username))
+                        "Successfully logged in with {0}".format(username))
                     login_check = True
-                    launch_chrome = True
+                    launch_browser = True
                     try:
                         ps = subprocess.Popen(
                             ('ps', 'aux'), stdout=subprocess.PIPE)
                         output = subprocess.check_output(
-                            ('pgrep', 'chrome'), stdin=ps.stdout)
+                            ('pgrep', browser.split("-")[1]), stdin=ps.stdout)
                         output = output.split("\n")
-                        if (len(output) > 1):
-                            launch_chrome = False
+                        if (len(output) > 0):
+                            launch_browser = False
                     except subprocess.CalledProcessError:
                         pass
                     except Exception as e:
                         print e
 
                     """Uncomment this piece of code to
-                    automatically launch google chrome after login:
-                    [Note: google-chrome will be launched only if
+                    automatically launch your web browser after login:
+                    [Note: web browser will be launched only if
                     it is not already open, and not otherwise]"""
 
-                    if credentials[1]['google-chrome'] == 'yes':
-                        print "Launching chrome.."
+                    if launch_browser:
+                        print "Launching " + browser + ".."
                         with open(devnull, 'wb') as devnull:
                             subprocess.Popen(
-                                'google-chrome', stdout=devnull,
+                                browser, stdout=devnull,
                                 stderr=subprocess.STDOUT)
 
                     print "Press Ctrl + C to logout"
