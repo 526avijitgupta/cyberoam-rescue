@@ -15,6 +15,11 @@ Thanks to [Yash Mehrotra](https://github.com/yashmehrotra) for his contribution.
 1. For login: `python .post.py login`  
 2. For logout: `python .post.py logout`  
 
+Note: You may set the value of `web-browser` in `.credentials.json` file (default:`"2"`), according to this:
+* `"1"` - Launch *google-chrome* immediately after successful login.
+* `"2"` - Launch *firefox* immediately after successful login. (default)
+* `"0"` - Do not launch any browser.
+
 ### Features:  
 1. Automatically switches for the next username, password combination in case of unsuccessfull login with one combination.   
 2. Keeps you logged in all the time by checking your login status periodically.  
