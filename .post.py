@@ -1,7 +1,6 @@
 from urllib import urlencode
 from urllib2 import urlopen
-from os import system, devnull
-import os
+from os import system, devnull, path
 import subprocess
 import signal
 from sys import argv, exit
@@ -18,7 +17,7 @@ BASE_URL = "http://172.16.68.6:8090/login.xml"
 BROWSERS_DICT = {"0": "", "1": "firefox", "2": "google-chrome"}
 
 try:
-    jsonPath = os.path.dirname(os.path.realpath(__file__))
+    jsonPath = path.dirname(path.realpath(__file__))
     credentials = load(open(jsonPath + '/.credentials.json'))
     user_dict = credentials[0]
     browser = BROWSERS_DICT[credentials[1]["web-browser"]]
