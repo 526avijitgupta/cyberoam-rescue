@@ -14,7 +14,7 @@ SLEEP_TIME = 200
 
 BASE_URL = "http://172.16.68.6:8090/login.xml"
 
-BROWSERS_DICT = {"0": "", "1": "firefox", "2": "google-chrome"}
+BROWSERS_DICT = {"0": "", "1": "firefox", "2": "google-chrome-stable"}
 
 try:
     jsonPath = path.dirname(path.realpath(__file__))
