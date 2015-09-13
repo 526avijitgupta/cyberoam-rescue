@@ -10,19 +10,21 @@ from json import load
 from check import *
 
 # For periodic checking of login status
-SLEEP_TIME = 200
+SLEEP_TIME = 120
 
 BASE_URL = "http://172.16.68.6:8090/login.xml"
 
-BROWSERS_DICT = {"0": "", "1": "firefox", "2": "google-chrome-stable"}
+BROWSERS_DICT = {"0": "", "1": "firefox", "2": "google-chrome"}
+
+CREDENTIALS_FILE = path.dirname(path.realpath(__file__)) + '/.credentials.json'
 
 try:
-    jsonPath = path.dirname(path.realpath(__file__))
-    credentials = load(open(jsonPath + '/.credentials.json'))
+    credentials = load(open(CREDENTIALS_FILE))
     user_dict = credentials[0]
     browser = BROWSERS_DICT[credentials[1]["web-browser"]]
     print browser
 except ValueError:
+    notify_alert("Some error occured!!")
     print """Error decoding the JSON file.
     [Note: Check that there is a trailing comma after every line in the
     credentials.json file, except the last one].
@@ -77,7 +79,18 @@ if __name__ == "__main__":
                 elif "exceeded" in data:
                     print "Data transfer exceeded"
                 elif "could not" in data:
-                    print "Incorrect username or password"
+                    print "Incorrect username or password, Removing this combination .."
+                    f = open(CREDENTIALS_FILE, "r+")
+                    d = f.readlines()
+                    f.seek(0)
+                    for i in d:
+                        if username not in i:
+                            f.write(i)
+                        else:
+                            print i
+                    f.truncate()
+                    f.close()
+    
                 elif "into" in data:
                     notify_alert(
                         "Successfully logged in with {0}".format(username))
@@ -117,6 +130,7 @@ if __name__ == "__main__":
             while login_check:
                 sleep(SLEEP_TIME)
                 if not check_status(username):
+                    print "Logging in again"
                     data = send_request("login", username, user_dict[username])
 
     except KeyboardInterrupt:
