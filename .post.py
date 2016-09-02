@@ -7,7 +7,7 @@ from sys import argv, exit
 from time import sleep
 import httplib
 from json import load
-from check import *
+from check import check_status 
 
 # For periodic checking of login status
 SLEEP_TIME = 120
