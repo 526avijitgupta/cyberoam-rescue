@@ -29,3 +29,7 @@ Note: You may set the value of `"web-browser"` in `.credentials.json` file (defa
 * For best usage, add custom keyboard shortcuts for the login/logout.  
 
 Feel free to fork and contribute
+
+#### Maintainer
+
+[Avijit Gupta](https://github.com/526avijitgupta)
